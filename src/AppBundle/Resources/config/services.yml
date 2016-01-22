@@ -1,1 +1,10 @@
-services: ~
+services:
+    app.attribute_type.interval:
+        class: AppBundle\AttributeType\IntervalAttributeType
+        tags:
+            - { name: "sylius.attribute.type", attribute-type: "interval", label: "Interval" }
+
+    app.form.type.attribute_type.interval:
+        class: AppBundle\Form\Type\AttributeType\IntervalAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_interval"}

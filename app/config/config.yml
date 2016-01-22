@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @SyliusCoreBundle/Resources/config/app/main.yml }
+    - { resource: @AppBundle/Resources/config/app.yml }
 
 framework:
     translator:      { fallback: %sylius.locale% }
@@ -83,3 +84,9 @@ swiftmailer:
     username:  %sylius.mailer.user%
     password:  %sylius.mailer.password%
     spool:     { type: memory }
+
+doctrine_migrations:
+    dir_name:   %kernel.root_dir%/migrations
+    namespace:  App\Migrations
+    table_name: app_migrations
+    name:       App Migrations
