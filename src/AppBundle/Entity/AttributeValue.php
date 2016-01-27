@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Sylius\Component\Attribute\Model\AttributeValueInterface;
 use Sylius\Component\Product\Model\AttributeValue as BaseAttributeValue;
 
 class AttributeValue extends BaseAttributeValue

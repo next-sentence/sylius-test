@@ -1,0 +1,12 @@
+<td>
+  {% if attributeValue.attribute.frontendWidget is constant('AppBundle\\AttributeType\\DatetimeAttributeType::TEXT') %}
+      {{ attributeValue.value|date('Y/m/d H:i:s') }}
+  {% else %}
+      <div id="datetime_datepicker"></div>
+      <script>
+          window.onload = function() {
+              $("#datetime_datepicker").datepicker("setDate", "{{ attributeValue.value|date('m/d/Y') }}");
+          }
+      </script>
+  {% endif %}
+</td>

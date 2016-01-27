@@ -3,9 +3,12 @@ sylius_attribute:
         product:
             attribute:
                 classes:
+                    controller: AppBundle\Controller\AttributeController
                     model: AppBundle\Entity\Attribute
                     form:
                       default: AppBundle\Form\Type\AttributeType
             attribute_value:
                 classes:
                     model: AppBundle\Entity\AttributeValue
+                    form:
+                        default: AppBundle\Form\Type\AttributeValueType

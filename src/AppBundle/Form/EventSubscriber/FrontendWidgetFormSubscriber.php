@@ -2,13 +2,6 @@
 
 namespace AppBundle\Form\EventSubscriber;
 
-use AppBundle\AttributeType\IntervalAttributeType;
-use Sylius\Component\Attribute\AttributeType\CheckboxAttributeType;
-use Sylius\Component\Attribute\AttributeType\DateAttributeType;
-use Sylius\Component\Attribute\AttributeType\IntegerAttributeType;
-use Sylius\Component\Attribute\AttributeType\PercentAttributeType;
-use Sylius\Component\Attribute\AttributeType\TextareaAttributeType;
-use Sylius\Component\Attribute\AttributeType\TextAttributeType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -30,43 +23,14 @@ class FrontendWidgetFormSubscriber implements EventSubscriberInterface
      */
     public function addFrontendWidgetField(FormEvent $event)
     {
-        $attribute = $event->getData();
         $form = $event->getForm();
+
+        $attribute = $event->getData();
+        $attributeType = ucfirst($attribute->getType()).'AttributeType';
 
         $form->add('frontendWidget', 'choice', array(
             'label' => 'Frontend widget',
-            'choices' => $this->getChoicesList($attribute->getType())
+            'choices' => call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getFrontendWidgetChoicesList')),
         ));
-    }
-
-    public function getChoicesList($type)
-    {
-        switch ($type) {
-            case CheckboxAttributeType::TYPE:
-                $choiceList = array('checkbox');
-                break;
-            /*case ChoiceAttributeType::TYPE:
-                $choiceList = array('list);
-                break;*/
-            case IntegerAttributeType::TYPE:
-                $choiceList = array('text');
-                break;
-            case PercentAttributeType::TYPE:
-                $choiceList = array('text');
-                break;
-            case TextAttributeType::TYPE:
-                $choiceList = array('text');
-                break;
-            case DateAttributeType::TYPE:
-                $choiceList = array('calendar, text');
-                break;
-            case IntervalAttributeType::TYPE:
-                $choiceList = array('calendar', 'text');
-                break;
-            default:
-                throw new \InvalidArgumentException('Invalid attribute type.');
-        }
-
-        return $choiceList;
     }
 }

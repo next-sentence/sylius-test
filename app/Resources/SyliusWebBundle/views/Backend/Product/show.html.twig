@@ -217,14 +217,8 @@
                 {% for attribute in product.attributes %}
                 <tr>
                     <td><strong>{{ attribute.name }}</strong></td>
-                    {% if attribute.value.timestamp is defined %}
-                        <td>{{ attribute.value|date('Y/m/d H:i:s') }}</td>
-                        {# temporar fix, need to add twig extension #}
-                    {% elseif attribute.type is constant('AppBundle\\AttributeType\\IntervalAttributeType::TYPE') %}
-                        <td>{{ attribute.value.start|date('Y/m/d') }}</td>
-                    {% else %}
-                        <td>{{ attribute.value }}</td>
-                    {% endif %}
+                    {% set attributeTemplate = 'AppBundle:AttributesType/FrontendWidget:' ~ attribute.attribute.type ~ '.html.twig' %}
+                    {% include attributeTemplate with {'attributeValue': attribute} %}
                 </tr>
                 {% else %}
                 <tr>

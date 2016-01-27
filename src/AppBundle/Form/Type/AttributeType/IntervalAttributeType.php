@@ -16,22 +16,22 @@ class IntervalAttributeType extends AbstractType
         /**
          * Form should depend on backend widget
          */
-        $builder->add('start', 'date', array(
-                'required'       => false,
+        $builder
+            ->add('start', 'date', array(
+                'attr' => array('class' => 'start_date_picker'),
                 'widget'         => 'single_text',
-                'format'         => 'y/M/d',
+                'format'         => 'M/d/y',
                 'model_timezone' => 'UTC',
                 'view_timezone'  => 'UTC',
-            )
-        );
-        $builder->add('end', 'date', array(
-                'required'       => false,
+            ))
+            ->add('end', 'date', array(
+                'attr' => array('class' => 'end_date_picker'),
                 'widget'         => 'single_text',
-                'format'         => 'y/M/d',
+                'format'         => 'M/d/y',
                 'model_timezone' => 'UTC',
                 'view_timezone'  => 'UTC',
-            )
-        );
+            ))
+        ;
     }
 
     /**
@@ -49,6 +49,6 @@ class IntervalAttributeType extends AbstractType
      */
     public function getName()
     {
-        return 'sylius_attribute_type_interval';
+        return 'sylius_attribute_type_interval_calendar';
     }
 }
