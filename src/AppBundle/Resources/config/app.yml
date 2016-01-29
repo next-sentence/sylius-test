@@ -20,3 +20,10 @@ sylius_archetype:
                     model: AppBundle\Entity\Archetype
                     form:
                       default: AppBundle\Form\Type\ArchetypeType
+sylius_taxonomy:
+    resources:
+        taxon:
+            classes:
+                model: AppBundle\Entity\Taxon
+                form:
+                  default: AppBundle\Form\Type\TaxonType
