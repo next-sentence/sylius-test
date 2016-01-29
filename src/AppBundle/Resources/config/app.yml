@@ -27,3 +27,11 @@ sylius_taxonomy:
                 model: AppBundle\Entity\Taxon
                 form:
                   default: AppBundle\Form\Type\TaxonType
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: AppBundle\Entity\Product
+                form:
+                    default: AppBundle\Form\Type\ProductType
