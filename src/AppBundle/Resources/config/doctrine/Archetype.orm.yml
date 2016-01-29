@@ -1,0 +1,7 @@
+AppBundle\Entity\Archetype:
+    type: entity
+    table: sylius_product_archetype
+    fields:
+        type:
+            type: string
+            length: 32

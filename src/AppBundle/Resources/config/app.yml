@@ -12,3 +12,11 @@ sylius_attribute:
                     model: AppBundle\Entity\AttributeValue
                     form:
                         default: AppBundle\Form\Type\AttributeValueType
+sylius_archetype:
+    resources:
+        product:
+            archetype:
+                classes:
+                    model: AppBundle\Entity\Archetype
+                    form:
+                      default: AppBundle\Form\Type\ArchetypeType
