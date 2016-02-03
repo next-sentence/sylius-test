@@ -19,6 +19,7 @@ class ProductType extends BaseProductType
             ->add('type', 'choice', array(
                 'label'   => 'Type',
                 'choices' => Product::getTypeLabels(),
+                'data' => Product::PRODUCT_TYPE,
                 'expanded' => true,
             ))
         ;
