@@ -5,3 +5,7 @@ AppBundle\Entity\Archetype:
         type:
             type: string
             length: 32
+    oneToMany:
+        widgets:
+            targetEntity: AppBundle\Entity\AttributeWidget
+            mappedBy: archetype

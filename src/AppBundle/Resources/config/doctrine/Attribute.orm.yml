@@ -16,3 +16,7 @@ AppBundle\Entity\Attribute:
             column: frontend_widget
             type: string
             length: 32
+    oneToOne:
+        widget:
+            targetEntity: AppBundle\Entity\AttributeWidget
+            mappedBy: attribute

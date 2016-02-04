@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Product\Model\Archetype as BaseArchetype;
 
 class Archetype extends BaseArchetype
@@ -12,9 +13,30 @@ class Archetype extends BaseArchetype
     /** @var  string */
     protected $type;
 
+    /** @var  AttributeWidget[]|ArrayCollection */
+    protected $widgets;
+
     public function __construct()
     {
         parent::__construct();
+
+        $this->widgets = new ArrayCollection();
+    }
+
+    /**
+     * @return AttributeWidget[]|ArrayCollection
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
+
+    /**
+     * @param AttributeWidget[]|ArrayCollection $widgets
+     */
+    public function setWidgets($widgets)
+    {
+        $this->widgets = $widgets;
     }
 
     /**

@@ -32,6 +32,25 @@ class Attribute extends BaseAttribute
     /** @var  string */
     protected $frontendWidget;
 
+    /** @var  AttributeWidget */
+    protected $widget;
+
+    /**
+     * @return AttributeWidget
+     */
+    public function getWidget()
+    {
+        return $this->widget;
+    }
+
+    /**
+     * @param AttributeWidget $widget
+     */
+    public function setWidget($widget)
+    {
+        $this->widget = $widget;
+    }
+
     /**
      * @return mixed
      */
