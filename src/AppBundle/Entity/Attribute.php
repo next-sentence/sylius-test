@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Sylius\Component\Product\Model\Attribute as BaseAttribute;
 
 class Attribute extends BaseAttribute
@@ -32,23 +33,29 @@ class Attribute extends BaseAttribute
     /** @var  string */
     protected $frontendWidget;
 
-    /** @var  AttributeWidget */
-    protected $widget;
+    /** @var  AttributeWidget[]|ArrayCollection */
+    protected $widgets;
 
-    /**
-     * @return AttributeWidget
-     */
-    public function getWidget()
+    public function __construct()
     {
-        return $this->widget;
+        parent::__construct();
+
+        $this->widgets = new ArrayCollection();
+    }
+    /**
+     * @return AttributeWidget[]|ArrayCollection
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
     }
 
     /**
-     * @param AttributeWidget $widget
+     * @param AttributeWidget[]|ArrayCollection $widgets
      */
-    public function setWidget($widget)
+    public function setWidgets($widgets)
     {
-        $this->widget = $widget;
+        $this->widgets = $widgets;
     }
 
     /**

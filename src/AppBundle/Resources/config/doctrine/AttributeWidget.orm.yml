@@ -1,4 +1,5 @@
 AppBundle\Entity\AttributeWidget:
+    repositoryClass: AppBundle\Doctrine\ORM\WidgetRepository
     type: entity
     table: sylius_product_archetype_attribute_widget
     id:
@@ -23,10 +24,9 @@ AppBundle\Entity\AttributeWidget:
             joinColumn:
                 name: archetype_id
                 referencedColumnName: id
-    oneToOne:
         attribute:
             targetEntity: AppBundle\Entity\Attribute
-            inversedBy: widget
+            inversedBy: widgets
             joinColumn:
                 name: attribute_id
                 referencedColumnName: id
