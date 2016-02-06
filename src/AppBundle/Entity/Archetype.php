@@ -54,6 +54,40 @@ class Archetype extends BaseArchetype
     {
         $this->type = $type;
     }
+//
+//    /**
+//    * {@inheritdoc}
+//     */
+//    public function addAttribute(AttributeWidget $attribute)
+//    {
+//        if (!$this->hasAttribute($attribute)) {
+//            $attribute->setArchetype($this);
+//            $this->attributes->add($attribute);
+//        }
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function removeAttribute(AttributeWidget $attribute)
+//    {
+//        if ($this->hasAttribute($attribute)) {
+//            $this->attributes->removeElement($attribute);
+//            $attribute->setArchetype(null);
+//        }
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function hasAttribute(AttributeWidget $attribute)
+//    {
+//        return $this->attributes->contains($attribute);
+//    }
 
     /**
      * @return array

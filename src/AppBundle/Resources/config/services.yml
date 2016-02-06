@@ -7,6 +7,11 @@ services:
             - { name: "sylius.attribute.type", attribute-type: "interval", label: "Interval" }
 
 
+    app.form.type.attribute_widget_type:
+        class: AppBundle\Form\Type\AttributeWidgetType
+        tags:
+            - { name: "form.type", alias: "sylius_product_archetype_attribute_widget"}
+
     app.form.type.attribute_type.interval_calendar:
         class: AppBundle\Form\Type\AttributeType\IntervalAttributeType
         tags:
