@@ -31,7 +31,7 @@ class AttributeWidgetType extends AbstractType
                 'choices' => call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getBackendWidgetChoicesList')),
             ));
 
-        $builder
+        /*$builder
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($options) {
                 $data = $event->getData();
                 if (isset($data['attribute'])) {
@@ -40,7 +40,7 @@ class AttributeWidgetType extends AbstractType
                     ));
                 }
             })
-        ;
+        ;*/
 //            ->addEventSubscriber(new FrontendWidgetFormSubscriber())
 //            ->addEventSubscriber(new BackendWidgetFormSubscriber())
 //        ;

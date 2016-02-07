@@ -9,3 +9,4 @@ AppBundle\Entity\Archetype:
         widgets:
             targetEntity: AppBundle\Entity\AttributeWidget
             mappedBy: archetype
+            cascade: ["persist", "remove"]

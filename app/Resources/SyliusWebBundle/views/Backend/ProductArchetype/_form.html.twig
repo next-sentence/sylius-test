@@ -1,5 +1,5 @@
-{#{% form_theme form 'SyliusWebBundle:Backend:forms.html.twig' %}#}
-{% form_theme form 'SyliusAttributeBundle::attributeCollection.html.twig' %}
+{% form_theme form 'SyliusWebBundle:Backend:forms.html.twig' %}
+{#{% form_theme form 'SyliusAttributeBundle::attributeCollection.html.twig' %}#}
 
 <fieldset>
     {{ form_row(form.code, {'attr': {'class': 'input-lg'}}) }}
@@ -11,11 +11,11 @@
     {#{{ form_row(form.widgets) }}#}
 
     <div class="" id="widgets">
-        <div data-form-type="collection" {{ block('widget_container_attributes') }}>
+        <div data-form-type="collection" {#{{ block('widget_container_attributes') }}#}>
             <div class="form-group">
                 <div>
-                    <div data-form-collection="list" class="row collection-list" data-length="{{ form.attributes|length }}">
-                        {{ form_row(form.attributes, { 'label': false }) }}
+                    <div data-form-collection="list" class="row collection-list" data-length="{{ form.widgets|length }}">
+                        {{ form_row(form.widgets) }}
                     </div>
                 </div>
             </div>

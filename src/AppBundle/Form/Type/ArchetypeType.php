@@ -15,13 +15,13 @@ class ArchetypeType extends BaseArchetypeType
     {
         parent::buildForm($builder, $options);
 
-        $builder
+        $builder->remove('attributes')
             ->add('type', 'choice', array(
                 'label'   => 'Type',
                 'choices' => Archetype::getTypeLabels(),
                 'expanded' => true,
             ))
-            ->add('attributes', 'collection', array(
+            ->add('widgets', 'collection', array(
                 'required'     => false,
                 'type'         => 'sylius_product_archetype_attribute_widget',
                 'prototype' => false,

@@ -54,40 +54,40 @@ class Archetype extends BaseArchetype
     {
         $this->type = $type;
     }
-//
-//    /**
-//    * {@inheritdoc}
-//     */
-//    public function addAttribute(AttributeWidget $attribute)
-//    {
-//        if (!$this->hasAttribute($attribute)) {
-//            $attribute->setArchetype($this);
-//            $this->attributes->add($attribute);
-//        }
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function removeAttribute(AttributeWidget $attribute)
-//    {
-//        if ($this->hasAttribute($attribute)) {
-//            $this->attributes->removeElement($attribute);
-//            $attribute->setArchetype(null);
-//        }
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function hasAttribute(AttributeWidget $attribute)
-//    {
-//        return $this->attributes->contains($attribute);
-//    }
+
+    /**
+    * {@inheritdoc}
+     */
+    public function addWidget(AttributeWidget $attribute)
+    {
+        if (!$this->hasWidget($attribute)) {
+            $attribute->setArchetype($this);
+            $this->widgets->add($attribute);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeWidget(AttributeWidget $attribute)
+    {
+        if ($this->hasAttribute($attribute)) {
+            $this->widgets->removeElement($attribute);
+            $attribute->setArchetype(null);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasWidget(AttributeWidget $attribute)
+    {
+        return $this->widgets->contains($attribute);
+    }
 
     /**
      * @return array

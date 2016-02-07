@@ -14,7 +14,7 @@
             <div class="form-group">
                 {% set id = form.vars.label|replace(' ', '_')|lower %}
                 <label class="col-lg-2 control-label required" for="{{ id }}">{{ form.vars.label }}</label>
-                <input type="hidden" name="sylius_product_archetype[attributes][{{ count }}][attribute]" id="sylius_product_archetype_attribute{{ count }}_attribute" value="{{ attributeId }}"/>
+                <input type="hidden" name="sylius_product_archetype[widgets][{{ count }}][attribute]" id="sylius_product_archetype_attribute{{ count }}_attribute" value="{{ attributeId }}"/>
                 <div class="col-lg-10">
                     {{ _self.formField(form, count, id, '') }}
                 </div>
@@ -31,7 +31,7 @@
         {% endfor %}
     {% elseif item.vars.name != '_token' %}
         {% set namePrefix = prefix|replace({'_': ']['}) %}
-        {% set dataName = 'sylius_product_archetype[attributes]['~count~namePrefix~']['~item.vars.name~']' %}
+        {% set dataName = 'sylius_product_archetype[widgets]['~count~namePrefix~']['~item.vars.name~']' %}
 
         {#{{ form_widget(item) }}      #}
         {{ form_widget(item, {'id': id, 'attr': {'data-name': dataName }}) }}
