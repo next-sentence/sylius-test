@@ -1,5 +1,5 @@
-#parameters:
-#    sylius.form.type.attribute_type.checkbox.class: AppBundle\Form\Type\AttributeType\CheckboxAttributeType
+parameters:
+    sylius.form.type.taxon_selection.class: AppBundle\Form\Type\TaxonSelectionType
 services:
     app.attribute_type.interval:
         class: AppBundle\AttributeType\IntervalAttributeType
