@@ -39,8 +39,8 @@
                 {% for attribute in product.attributes %}
                 <tr>
                     <td>{{ attribute.name }}</td>
-                    {% set attributeTemplate = 'AppBundle:AttributesTypes/FrontendWidget:' ~ attribute.attribute.type ~ '.html.twig' %}
-                    {% include [attributeTemplate, 'SyliusWebBundle:Frontend/Product:_attribute.html.twig'] with {'attribute': attribute} %}
+                    {% set attributeTemplate = 'AppBundle:AttributesType/FrontendWidget:' ~ attribute.attribute.type ~ '.html.twig' %}
+                    {% include attributeTemplate with {'attributeValue': attribute} %}
                 </tr>
                 {% endfor %}
             </tbody>
