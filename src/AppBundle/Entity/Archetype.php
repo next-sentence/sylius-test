@@ -58,11 +58,12 @@ class Archetype extends BaseArchetype
     /**
     * {@inheritdoc}
      */
-    public function addWidget(AttributeWidget $attribute)
+    public function addWidget(AttributeWidget $widget)
     {
-        if (!$this->hasWidget($attribute)) {
-            $attribute->setArchetype($this);
-            $this->widgets->add($attribute);
+        if (!$this->hasWidget($widget)) {
+            $widget->setArchetype($this);
+            $widget->getArchetype()->addAttribute($widget->getAttribute());
+            $this->widgets->add($widget);
         }
 
         return $this;
@@ -71,11 +72,12 @@ class Archetype extends BaseArchetype
     /**
      * {@inheritdoc}
      */
-    public function removeWidget(AttributeWidget $attribute)
+    public function removeWidget(AttributeWidget $widget)
     {
-        if ($this->hasAttribute($attribute)) {
-            $this->widgets->removeElement($attribute);
-            $attribute->setArchetype(null);
+        if ($this->hasWidget($widget)) {
+            $this->widgets->removeElement($widget);
+            $widget->getArchetype()->removeAttribute($widget->getAttribute());
+            $widget->setArchetype(null);
         }
 
         return $this;
@@ -84,9 +86,9 @@ class Archetype extends BaseArchetype
     /**
      * {@inheritdoc}
      */
-    public function hasWidget(AttributeWidget $attribute)
+    public function hasWidget(AttributeWidget $widget)
     {
-        return $this->widgets->contains($attribute);
+        return $this->widgets->contains($widget);
     }
 
     /**

@@ -4,12 +4,11 @@ namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Attribute;
 use AppBundle\Entity\AttributeWidget;
-use AppBundle\Form\EventSubscriber\BackendWidgetFormSubscriber;
-use AppBundle\Form\EventSubscriber\FrontendWidgetFormSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AttributeWidgetType extends AbstractType
@@ -19,31 +18,51 @@ class AttributeWidgetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $attributeType = ucfirst($options['attribute_type']).'AttributeType';
-
-        $builder
-            ->add('frontendWidget', 'choice', array(
-                'label' => 'Frontend widget',
-                'choices' => call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getFrontendWidgetChoicesList')),
-            ))
-            ->add('backendWidget',  'choice', array(
-                'label' => 'Backend widget',
-                'choices' => call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getBackendWidgetChoicesList')),
+            $builder->add('attribute', 'sylius_product_attribute_choice', array(
+                'required' => false,
+                'attr' => array('class' => 'hidden'),
+                'label'    => false,
             ));
 
-        /*$builder
-            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) use ($options) {
-                $data = $event->getData();
-                if (isset($data['attribute'])) {
-                    $event->getForm()->add('attribute', 'entity_hidden', array(
-                        'data_class' => $options['attribute_data_class'],
-                    ));
-                }
-            })
-        ;*/
-//            ->addEventSubscriber(new FrontendWidgetFormSubscriber())
-//            ->addEventSubscriber(new BackendWidgetFormSubscriber())
-//        ;
+//        $builder->add('attribute', 'entity_hidden', array(
+//            'data_class' => Attribute::class,
+//        ));
+
+        $formModifier = function(FormInterface $form, $data = null) {
+            $frontendChoices = $backendChoices = array();
+            if ($data instanceof AttributeWidget) {
+                $data = $data->getAttribute();
+            }
+            if($data instanceof Attribute) {
+                $attributeType = ucfirst($data->getType()).'AttributeType';
+                $frontendChoices = call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getFrontendWidgetChoicesList'));
+                $backendChoices = call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getBackendWidgetChoicesList'));
+            }
+
+            $form
+                ->add('frontendWidget', 'choice', array(
+                    'label' => 'Frontend widget',
+                    'choices' => $frontendChoices,
+                ))
+                ->add('backendWidget',  'choice', array(
+                    'label' => 'Backend widget',
+                    'choices' => $backendChoices,
+                ));
+        };
+
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) use ($formModifier) {
+                $formModifier($event->getForm(), $event->getData());
+            }
+        );
+
+        $builder->get('attribute')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier) {
+                $formModifier($event->getForm()->getParent(), $event->getForm()->getData());
+            }
+        );
     }
 
     /**
@@ -53,8 +72,6 @@ class AttributeWidgetType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => AttributeWidget::class,
-            'attribute_data_class' => Attribute::class,
-            'attribute_type' => 'text'
         ));
     }
 

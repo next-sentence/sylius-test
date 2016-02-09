@@ -2,13 +2,13 @@
 (function ($) {
     'use strict';
 
-    function increaseAttributesNumber() {
+    function increaseAttributesWidgetNumber() {
         var currentIndex = parseInt(getNextIndex());
-        $('#widgets .collection-list').attr('data-length', currentIndex+1);
+        $('#widgets .collection-list1').attr('data-length', currentIndex+1);
     }
 
     function getNextIndex() {
-        return $('#widgets .collection-list').attr('data-length');
+        return $('#widgets .collection-list1').attr('data-length');
     }
 
     function modifyModalOnItemDelete() {
@@ -53,7 +53,7 @@
                 dataType: 'html'
             }).done(function(data){
                 var finalData = modifyAttributeWidgetForms($(data));
-                $('#widgets .collection-list').append(finalData);
+                $('#widgets .collection-list1').append(finalData);
                 $('#widget-modal').modal('hide');
                 modifyModalOnItemDelete();
                 increaseAttributesWidgetNumber();
@@ -63,6 +63,8 @@
 
     $(document).ready(function(){
         var attributesModal = $('#widget-modal');
+        var archetypeParent = $('#sylius_product_archetype_parent');
+
         attributesModal
             .on('shown.bs.modal', function () {
                 setAttributeWidgetChoiceListener();
@@ -72,6 +74,29 @@
             })
             .on('hidden.bs.modal', function() {
                 controlAttributesList();
+            })
+        ;
+
+        archetypeParent
+            .on('change', function () {
+                var value = $(this).val();
+                $('#archetype_parent').val(value);
+                $('a[data-form-collection="delete"]').click();
+
+                var form = $('#attributeChoice');
+                $.ajax({
+                    type: 'GET',
+                    url: form.attr('action'),
+                    data: form.serialize()+'&count='+getNextIndex(),
+                    dataType: 'html'
+                }).done(function(data){
+                    var finalData = modifyAttributeWidgetForms($(data));
+                    $('#widgets .collection-list1').append(finalData);
+                    $('#widget-modal').modal('hide');
+                    controlAttributesList();
+                    modifyModalOnItemDelete();
+                    increaseAttributesWidgetNumber();
+                });
             })
         ;
 

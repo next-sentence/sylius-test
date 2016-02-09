@@ -20,6 +20,9 @@ sylius_archetype:
                     model: AppBundle\Entity\Archetype
                     form:
                         default: AppBundle\Form\Type\ArchetypeType
+            subject: AppBundle\Entity\Product
+            attribute: AppBundle\Entity\Attribute
+            option: Sylius\Component\Product\Model\Option
 
 sylius_taxonomy:
     resources:

@@ -34,8 +34,8 @@
             </td>
             <td>
                 <ul>
-                    {% for attribute in archetype.attributes %}
-                    <li>{{ attribute.name }}</li>
+                    {% for widget in archetype.widgets %}
+                    <li>{{ widget.attribute.name }}</li>
                     {% endfor %}
                 </ul>
             </td>
