@@ -1,6 +1,6 @@
 <td>
-{% if attributeValue.attribute.frontendWidget is constant('AppBundle\\AttributeType\\CheckboxAttributeType::CHECKBOX') %}
-    {% if attributeValue.value %}
+{% if attributeWidget is constant('AppBundle\\AttributeType\\CheckboxAttributeType::CHECKBOX') %}
+    {% if attributeValue %}
         {% set label = 'sylius.yes' %}
         {% set class = 'label-success' %}
     {% else %}

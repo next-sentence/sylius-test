@@ -21,8 +21,22 @@
             </div>
             <script>
                 $(function() {
-                    $( '.start_date_picker' ).datepicker();
-                    $( '.end_date_picker' ).datepicker();
+                    $( '.start_date_picker' ).datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 3,
+                        onClose: function( selectedDate ) {
+                            $( ".start_date_picker" ).datepicker( "option", "minDate", selectedDate );
+                        }
+                    });
+                    $( '.end_date_picker' ).datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 3,
+                        onClose: function( selectedDate ) {
+                            $( ".end_date_picker" ).datepicker( "option", "maxDate", selectedDate );
+                        }
+                    });
                 });
             </script>
         </div>

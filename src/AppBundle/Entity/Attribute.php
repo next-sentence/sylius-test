@@ -123,6 +123,48 @@ class Attribute extends BaseAttribute
     }
 
     /**
+     * @param Archetype|null $archetype
+     * @return string
+     */
+    public function getFewWidgetByArchetype(Archetype $archetype = null)
+    {
+        if ($archetype) {
+            $widget = $this->getWidgets()->filter(
+                function (AttributeWidget $widget) use ($archetype) {
+                    return $widget->getArchetype() === $archetype;
+                }
+            )->current();
+
+            if ($widget) {
+                return $widget->getFrontendWidget();
+            }
+        }
+
+        return $this->getFrontendWidget();
+    }
+
+    /**
+     * @param Archetype|null $archetype
+     * @return string
+     */
+    public function getBewWidgetByArchetype(Archetype $archetype = null)
+    {
+        if ($archetype) {
+            $widget = $this->getWidgets()->filter(
+                function (AttributeWidget $widget) use ($archetype) {
+                    return $widget->getArchetype() === $archetype;
+                }
+            )->current();
+
+            if ($widget) {
+                return $widget->getBackendWidget();
+            }
+        }
+
+        return $this->getBackendWidget();
+    }
+
+    /**
      * @return array
      */
     public static function getRequirementLabels()

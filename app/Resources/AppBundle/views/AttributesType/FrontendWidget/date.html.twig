@@ -1,11 +1,11 @@
 <td>
-  {% if attributeValue.attribute.frontendWidget is constant('AppBundle\\AttributeType\\DateAttributeType::TEXT') %}
-      {{ attributeValue.value|date('Y/m/d') }}
+  {% if attributeWidget is constant('AppBundle\\AttributeType\\DateAttributeType::TEXT') %}
+      {{ attributeValue|date('Y/m/d') }}
   {% else %}
       <div id="date_datepicker"></div>
       <script>
           window.onload = function() {
-              $("#date_datepicker").datepicker("setDate", "{{ attributeValue.value|date('m/d/Y') }}");
+              $("#date_datepicker").datepicker("setDate", "{{ attributeValue|date('m/d/Y') }}");
           }
       </script>
   {% endif %}

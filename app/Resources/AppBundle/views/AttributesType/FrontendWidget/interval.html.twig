@@ -1,11 +1,11 @@
 <td>
-{% if attributeValue.attribute.frontendWidget is constant('AppBundle\\AttributeType\\IntervalAttributeType::TEXT') %}
-    {{ attributeValue.value.start|date('Y/m/d') ~ ' - ' ~ attributeValue.value.end|date('Y/m/d') }}
+{% if attributeWidget is constant('AppBundle\\AttributeType\\IntervalAttributeType::TEXT') %}
+    {{ attributeValue.start|date('Y/m/d') ~ ' - ' ~ attributeValue.end|date('Y/m/d') }}
 {% else %}
     <div class="interval_datepicker"></div>
     <script>
         window.onload = function() {
-            $(".interval_datepicker").datepicker("setDate", "{{ attributeValue.value.end|date('m/d/Y') }}");
+            $(".interval_datepicker").datepicker("setDate", "{{ attributeValue.end|date('m/d/Y') }}");
         }
     </script>
 {% endif %}

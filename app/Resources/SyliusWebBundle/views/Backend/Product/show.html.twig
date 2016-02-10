@@ -218,7 +218,7 @@
                 <tr>
                     <td><strong>{{ attribute.name }}</strong></td>
                     {% set attributeTemplate = 'AppBundle:AttributesType/FrontendWidget:' ~ attribute.attribute.type ~ '.html.twig' %}
-                    {% include attributeTemplate with {'attributeValue': attribute} %}
+                    {% include attributeTemplate with {'attributeValue': attribute.value, 'attributeWidget': attribute.attribute.getFewWidgetByArchetype(product.archetype)} %}
                 </tr>
                 {% else %}
                 <tr>

@@ -19,6 +19,17 @@ class ProductType extends BaseProductType
         $product = $options['data'];
         $archetype = $product->getArchetype();
         $builder
+            ->add('attributes', 'collection', array(
+                'required'     => false,
+                'type'         => 'sylius_product_attribute_value',
+                'prototype' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'options' => array(
+                    'archetype' => $archetype,
+                ),
+            ))
             ->add('taxons', 'sylius_taxon_selection', array(
                 'archetype' => $archetype,
             ))
