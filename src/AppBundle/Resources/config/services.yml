@@ -57,6 +57,11 @@ services:
         tags:
             - { name: "form.type", alias: "sylius_attribute_type_date_dropdown"}
 
+    app.form.type.attribute_type.date_calendar:
+        class: AppBundle\Form\Type\AttributeType\DateCalendarAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_date_calendar"}
+
     app.form.type.attribute_type.datetime_input:
         class: AppBundle\Form\Type\AttributeType\DatetimeAttributeType
         tags:

@@ -28,7 +28,7 @@ class DateAttributeType extends BaseDateAttributeType implements AttributeTypeIn
     public static function getBackendWidgetChoicesList()
     {
         return array(
-//            self::CALENDAR => 'Calendar',
+            self::CALENDAR => 'Calendar',
 //            self::INPUT => 'Predefined input',
             self::DROPDOWN => '3 Dropdowns',
         );
