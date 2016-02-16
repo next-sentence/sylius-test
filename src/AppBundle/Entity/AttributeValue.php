@@ -28,5 +28,4 @@ class AttributeValue extends BaseAttributeValue
     {
         $this->array = $array;
     }
-
 }

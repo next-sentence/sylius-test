@@ -8,6 +8,9 @@ use Symfony\Component\Form\FormEvents;
 
 class BackendWidgetFormSubscriber implements EventSubscriberInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public static function getSubscribedEvents()
     {
         return array(
@@ -30,5 +33,4 @@ class BackendWidgetFormSubscriber implements EventSubscriberInterface
             'choices' => call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getBackendWidgetChoicesList')),
         ));
     }
-
 }

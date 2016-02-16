@@ -13,7 +13,6 @@ class AttributeController extends BaseAttributeController
 {
     /**
      * @param Request $request
-     *
      * @return Response
      */
     public function renderAttributeValueFormsAction(Request $request)
@@ -56,6 +55,10 @@ class AttributeController extends BaseAttributeController
         return $this->render($view, array('form' => $form->createView()));
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function renderAttributeWidgetFormsAction(Request $request)
     {
         $attributeRepository = $this->get('sylius.repository.product_attribute');

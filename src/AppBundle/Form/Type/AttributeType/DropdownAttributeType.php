@@ -28,7 +28,7 @@ class DropdownAttributeType extends AbstractType
             ),
             'expanded' => false,
             'multiple' => false,
-            'choices_as_values' => true
+            'choices_as_values' => true,
         ));
     }
 

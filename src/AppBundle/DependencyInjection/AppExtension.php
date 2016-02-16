@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class AppExtension extends Extension
 {
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();

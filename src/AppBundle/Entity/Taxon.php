@@ -11,11 +11,6 @@ class Taxon extends BaseTaxon
     /** @var  Archetype */
     public $serviceArchetype;
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * @return Archetype
      */
@@ -47,5 +42,4 @@ class Taxon extends BaseTaxon
     {
         $this->serviceArchetype = $serviceArchetype;
     }
-
 }

@@ -16,6 +16,9 @@ class Archetype extends BaseArchetype
     /** @var  AttributeWidget[]|ArrayCollection */
     protected $widgets;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();

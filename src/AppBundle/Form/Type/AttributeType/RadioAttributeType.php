@@ -24,11 +24,11 @@ class RadioAttributeType extends AbstractType
             'label' => false,
             'choices' => array(
                 'no' => false,
-                'yes' => true
+                'yes' => true,
             ),
             'expanded' => true,
             'multiple' => false,
-            'choices_as_values' => true
+            'choices_as_values' => true,
         ));
     }
 

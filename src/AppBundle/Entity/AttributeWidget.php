@@ -89,5 +89,4 @@ class AttributeWidget
     {
         $this->frontendWidget = $frontendWidget;
     }
-
 }

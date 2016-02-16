@@ -26,7 +26,7 @@ class TaxonType extends BaseTaxonType
                         ->where('o.type = :type')
                         ->setParameter('type', Archetype::PRODUCT_TYPE)
                     ;
-                }
+                },
             ))
             ->add('serviceArchetype', 'entity', array(
                 'empty_value' => '---',
@@ -37,7 +37,7 @@ class TaxonType extends BaseTaxonType
                         ->where('o.type = :type')
                         ->setParameter('type', Archetype::SERVICE_TYPE)
                     ;
-                }
+                },
             ))
         ;
     }

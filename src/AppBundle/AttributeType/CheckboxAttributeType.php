@@ -2,8 +2,6 @@
 
 namespace AppBundle\AttributeType;
 
-use AppBundle\AttributeType\AttributeTypeInterface;
-use AppBundle\Entity\Attribute;
 use Sylius\Component\Attribute\AttributeType\CheckboxAttributeType as BaseCheckboxAttributeType;
 
 class CheckboxAttributeType extends BaseCheckboxAttributeType implements AttributeTypeInterface
@@ -17,9 +15,9 @@ class CheckboxAttributeType extends BaseCheckboxAttributeType implements Attribu
      */
     public static function getFrontendWidgetChoicesList()
     {
-       return array(
-            self::CHECKBOX => 'Checkbox',
-       );
+        return array(
+           self::CHECKBOX => 'Checkbox',
+        );
     }
 
     /**

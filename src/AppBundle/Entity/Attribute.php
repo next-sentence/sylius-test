@@ -36,6 +36,9 @@ class Attribute extends BaseAttribute
     /** @var  AttributeWidget[]|ArrayCollection */
     protected $widgets;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();

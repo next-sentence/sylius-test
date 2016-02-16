@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 class WidgetRepository extends EntityRepository
 {
     /**
-     * @param Attribute $attribute
+     * @param Attribute      $attribute
      * @param Archetype|null $archetype
      * @return array
      */

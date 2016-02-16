@@ -3,7 +3,6 @@
 namespace AppBundle\AttributeType;
 
 use AppBundle\Entity\AttributeValue;
-use AppBundle\Entity\Attribute;
 use Sylius\Component\Attribute\Model\AttributeValueInterface;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;

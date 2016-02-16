@@ -13,9 +13,6 @@ class IntervalAttributeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        /**
-         * Form should depend on backend widget
-         */
         $builder
             ->add('start', 'date', array(
                 'attr' => array('class' => 'start_date_picker'),

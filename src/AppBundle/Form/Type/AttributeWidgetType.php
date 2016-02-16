@@ -18,22 +18,22 @@ class AttributeWidgetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-            $builder->add('attribute', 'sylius_product_attribute_choice', array(
-                'required' => false,
-                'attr' => array('class' => 'hidden'),
-                'label'    => false,
-            ));
+        $builder->add('attribute', 'sylius_product_attribute_choice', array(
+            'required' => false,
+            'attr' => array('class' => 'hidden'),
+            'label'    => false,
+        ));
 
 //        $builder->add('attribute', 'entity_hidden', array(
 //            'data_class' => Attribute::class,
 //        ));
 
-        $formModifier = function(FormInterface $form, $data = null) {
+        $formModifier = function (FormInterface $form, $data = null) {
             $frontendChoices = $backendChoices = array();
             if ($data instanceof AttributeWidget) {
                 $data = $data->getAttribute();
             }
-            if($data instanceof Attribute) {
+            if ($data instanceof Attribute) {
                 $attributeType = ucfirst($data->getType()).'AttributeType';
                 $frontendChoices = call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getFrontendWidgetChoicesList'));
                 $backendChoices = call_user_func(array("AppBundle\\AttributeType\\".$attributeType, 'getBackendWidgetChoicesList'));
@@ -44,7 +44,7 @@ class AttributeWidgetType extends AbstractType
                     'label' => 'Frontend widget',
                     'choices' => $frontendChoices,
                 ))
-                ->add('backendWidget',  'choice', array(
+                ->add('backendWidget', 'choice', array(
                     'label' => 'Backend widget',
                     'choices' => $backendChoices,
                 ));
@@ -75,6 +75,9 @@ class AttributeWidgetType extends AbstractType
         ));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'sylius_product_archetype_attribute_widget';
