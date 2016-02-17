@@ -1,0 +1,42 @@
+sylius_attribute:
+    resources:
+        product:
+            attribute:
+                classes:
+                    controller: Fyb\Bundle\AttributeBundle\Controller\AttributeController
+                    model: Fyb\Component\Attribute\Model\Attribute
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType
+            attribute_value:
+                classes:
+                    model: Fyb\Component\Attribute\Model\AttributeValue
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\AttributeValueType
+sylius_archetype:
+    resources:
+        product:
+            archetype:
+                classes:
+                    model: Fyb\Component\Attribute\Model\Archetype
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\ArchetypeType
+            subject: Fyb\Component\Core\Model\Product
+            attribute: Fyb\Component\Attribute\Model\Attribute
+            option: Sylius\Component\Product\Model\Option
+
+sylius_taxonomy:
+    resources:
+        taxon:
+            classes:
+                model: Fyb\Component\Core\Model\Taxon
+                repository: Fyb\Bundle\CoreBundle\Doctrine\ORM\TaxonRepository
+                form:
+                    default: Fyb\Bundle\CoreBundle\Form\Type\TaxonType
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Fyb\Component\Core\Model\Product
+                form:
+                    default: Fyb\Bundle\CoreBundle\Form\Type\ProductType

@@ -1,0 +1,31 @@
+Fyb\Component\Attribute\Model\AttributeWidget:
+    type: entity
+    table: sylius_product_archetype_attribute_widget
+    id:
+        id:
+            type: integer
+            generator:
+              strategy: AUTO
+    fields:
+        backendWidget:
+            column: backend_widget
+            type: string
+            length: 32
+        frontendWidget:
+            column: frontend_widget
+            type: string
+            length: 32
+
+    manyToOne:
+        archetype:
+            targetEntity: Fyb\Component\Attribute\Model\Archetype
+            inversedBy: widgets
+            joinColumn:
+                name: archetype_id
+                referencedColumnName: id
+        attribute:
+            targetEntity: Fyb\Component\Attribute\Model\Attribute
+            inversedBy: widgets
+            joinColumn:
+                name: attribute_id
+                referencedColumnName: id

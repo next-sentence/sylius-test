@@ -1,0 +1,12 @@
+<td>
+{% if attributeWidget is constant('Fyb\\Component\\Attribute\\AttributeType\\CheckboxAttributeType::CHECKBOX') %}
+    {% if attributeValue %}
+        {% set label = 'sylius.yes' %}
+        {% set class = 'label-success' %}
+    {% else %}
+        {% set label = 'sylius.no' %}
+        {% set class = 'label-danger' %}
+    {% endif %}
+<span class="label {{ class }}">{{ label|trans|upper }}</span>
+{% endif %}
+</td>

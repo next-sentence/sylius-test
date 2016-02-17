@@ -1,0 +1,3 @@
+imports:
+    - { resource: @FybCoreBundle/Resources/config/app/fyb.yml }
+    - { resource: @FybCoreBundle/Resources/config/app/sylius.yml }

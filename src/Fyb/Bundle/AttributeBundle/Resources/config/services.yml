@@ -1,0 +1,65 @@
+services:
+    fyb.attribute_type.interval:
+        class: Fyb\Component\Attribute\AttributeType\IntervalAttributeType
+        tags:
+            - { name: "sylius.attribute.type", attribute-type: "interval", label: "Interval" }
+
+    fyb.form.type.attribute_widget_type:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeWidgetType
+        tags:
+            - { name: "form.type", alias: "sylius_product_archetype_attribute_widget"}
+
+    fyb.form.type.attribute_type.interval_calendar:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\IntervalAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_interval_calendar"}
+
+    fyb.form.type.attribute_type.checkbox_checkbox:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\CheckboxAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_checkbox_checkbox"}
+
+    fyb.form.type.attribute_type.checkbox_radio:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\RadioAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_checkbox_radio"}
+
+    fyb.form.type.attribute_type.checkbox_dropdown:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\DropdownAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_checkbox_dropdown"}
+
+    fyb.form.type.attribute_type.text_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\TextAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_text_input"}
+
+    fyb.form.type.attribute_type.textarea_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\TextareaAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_textarea_textarea"}
+
+    fyb.form.type.attribute_type.percent_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\PercentAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_percent_input"}
+
+    fyb.form.type.attribute_type.integer_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\IntegerAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_integer_input"}
+
+    fyb.form.type.attribute_type.date_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\DateAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_date_dropdown"}
+
+    fyb.form.type.attribute_type.date_calendar:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\DateCalendarAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_date_calendar"}
+
+    fyb.form.type.attribute_type.datetime_input:
+        class: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType\DatetimeAttributeType
+        tags:
+            - { name: "form.type", alias: "sylius_attribute_type_datetime_dropdown"}

@@ -1,0 +1,7 @@
+parameters:
+    sylius.form.type.taxon_selection.class: Fyb\Bundle\CoreBundle\Form\Type\TaxonSelectionType
+
+services:
+#    fyb_core.example:
+#        class: Fyb\Bundle\CoreBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

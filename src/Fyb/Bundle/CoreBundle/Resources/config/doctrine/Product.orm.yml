@@ -1,0 +1,7 @@
+Fyb\Component\Core\Model\Product:
+    type: entity
+    table: sylius_product
+    fields:
+        type:
+            type: string
+            length: 32

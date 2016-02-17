@@ -1,0 +1,12 @@
+Fyb\Component\Attribute\Model\Archetype:
+    type: entity
+    table: sylius_product_archetype
+    fields:
+        type:
+            type: string
+            length: 32
+    oneToMany:
+        widgets:
+            targetEntity: Fyb\Component\Attribute\Model\AttributeWidget
+            mappedBy: archetype
+            cascade: ["persist", "remove"]

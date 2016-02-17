@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        fyb.attribte_widget:
+            classes:
+                model: Fyb\Component\Attribute\Model\AttributeWidget
+                repository: Fyb\Bundle\AttributeBundle\Doctrine\ORM\AttributeWidgetRepository

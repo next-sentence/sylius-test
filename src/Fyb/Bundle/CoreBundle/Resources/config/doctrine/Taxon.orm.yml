@@ -1,0 +1,14 @@
+Fyb\Component\Core\Model\Taxon:
+    type: entity
+    table: sylius_taxon
+    oneToOne:
+        productArchetype:
+            targetEntity: Fyb\Component\Attribute\Model\Archetype
+            joinColumn:
+                name: product_archetype_id
+                referencedColumnName: id
+        serviceArchetype:
+            targetEntity: Fyb\Component\Attribute\Model\Archetype
+            joinColumn:
+                name: service_archetype_id
+                referencedColumnName: id
