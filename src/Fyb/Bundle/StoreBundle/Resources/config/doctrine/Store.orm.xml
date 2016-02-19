@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+
+    <entity name="Fyb\Component\Store\Model\Store" table="fyb_store">
+
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="code" type="string" unique="true" />
+        <field name="name" type="string" />
+        <field name="address" type="text" nullable="true" />
+        <field name="enabled" type="boolean" />
+        <field name="geoloc" type="text" nullable="true" />
+
+        <one-to-one field="user" target-entity="Fyb\Component\Core\Model\User" mapped-by="store">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-one>
+
+        <one-to-many field="products" target-entity="Fyb\Component\Core\Model\Product" mapped-by="store">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update"/>
+        </field>
+
+    </entity>
+
+</doctrine-mapping>

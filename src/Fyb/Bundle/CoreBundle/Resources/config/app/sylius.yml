@@ -40,3 +40,9 @@ sylius_product:
                 model: Fyb\Component\Core\Model\Product
                 form:
                     default: Fyb\Bundle\CoreBundle\Form\Type\ProductType
+sylius_user:
+    resources:
+        customer:
+            classes:
+                controller: Fyb\Bundle\CoreBundle\Controller\CustomerController
+

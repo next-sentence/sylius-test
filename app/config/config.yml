@@ -58,6 +58,10 @@ doctrine:
                         type: xml
                         dir: Resources/config/doctrine
                         prefix: Fyb\Component\Attribute\Model
+                    FybStoreBundle:
+                        type: xml
+                        dir: Resources/config/doctrine
+                        prefix: Fyb\Component\Store\Model
                     FybCoreBundle:
                         type: xml
                         dir: Resources/config/doctrine

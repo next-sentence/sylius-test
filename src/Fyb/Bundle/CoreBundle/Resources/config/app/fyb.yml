@@ -4,3 +4,6 @@ sylius_resource:
             classes:
                 model: Fyb\Component\Attribute\Model\AttributeWidget
                 repository: Fyb\Bundle\AttributeBundle\Doctrine\ORM\AttributeWidgetRepository
+        fyb.store:
+            classes:
+                model: Fyb\Component\Store\Model\Store

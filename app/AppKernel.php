@@ -12,6 +12,7 @@ class AppKernel extends Kernel
         $bundles = array(
             new \Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
             new Fyb\Bundle\AttributeBundle\FybAttributeBundle(),
+            new Fyb\Bundle\StoreBundle\FybStoreBundle(),
             new Fyb\Bundle\CoreBundle\FybCoreBundle(),
             new Fyb\Bundle\WebBundle\FybWebBundle(),
         );

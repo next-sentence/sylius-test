@@ -2,6 +2,7 @@
 
 namespace Fyb\Component\Core\Model;
 
+use Fyb\Component\Store\Model\Store;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
 class Product extends BaseProduct
@@ -11,6 +12,25 @@ class Product extends BaseProduct
 
     /** @var  string */
     protected $type = self::PRODUCT_TYPE;
+
+    /** @var  Store */
+    protected $store;
+
+    /**
+     * @return Store
+     */
+    public function getStore()
+    {
+        return $this->store;
+    }
+
+    /**
+     * @param Store $store
+     */
+    public function setStore($store)
+    {
+        $this->store = $store;
+    }
 
     /**
      * @return string
