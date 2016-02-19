@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Fyb\Component\Attribute\Model\Archetype" table="sylius_archetype">
+
+        <field name="type" column="type" type="string" length="32" />
+
+        <one-to-many target-entity="Fyb\Component\Attribute\Model\AttributeWidget" mapped-by="archetype" field="widgets">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
+   </entity>
+
+</doctrine-mapping>

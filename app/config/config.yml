@@ -55,11 +55,11 @@ doctrine:
                 auto_mapping: true
                 mappings:
                     FybAttributeBundle:
-                        type: yml
+                        type: xml
                         dir: Resources/config/doctrine
                         prefix: Fyb\Component\Attribute\Model
                     FybCoreBundle:
-                        type: yml
+                        type: xml
                         dir: Resources/config/doctrine
                         prefix: Fyb\Component\Core\Model
                     gedmo_loggable:

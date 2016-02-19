@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Fyb\Component\Attribute\Model\Attribute" table="sylius_product_attribute">
+
+        <field name="requirement" column="requirement" type="string" length="32" />
+        <field name="filter" column="filter" type="string" length="32" />
+        <field name="backendWidget" column="backend_widget" type="string" length="32" />
+        <field name="frontendWidget" column="frontend_widget" type="string" length="32" />
+
+        <one-to-many target-entity="Fyb\Component\Attribute\Model\AttributeWidget" mapped-by="attribute" field="widgets">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+
+   </entity>
+
+</doctrine-mapping>
