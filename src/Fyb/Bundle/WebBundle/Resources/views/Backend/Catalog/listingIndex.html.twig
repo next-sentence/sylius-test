@@ -1,0 +1,40 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/Catalog/Listing:macros.html.twig' import list as list_products %}
+{% from 'SyliusWebBundle:Backend/Taxon:macros.html.twig' import list as list_taxons %}
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% set taxonomy = taxon.taxonomy %}
+{% set productArchetype, serviceArchetype = {}, {} %}
+{% if taxon.productArchetype %}
+    {% set productArchetype = {'archetype': taxon.productArchetype.code} %}
+{% endif %}
+{% if taxon.serviceArchetype %}
+    {% set serviceArchetype = {'archetype': taxon.serviceArchetype.code} %}
+{% endif %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li><a href="{{ path('fyb_backend_taxonomy_index') }}">{{ 'sylius.breadcrumb.taxonomy.index'|trans }}</a></li>
+    <li><a href="{{ path('sylius_backend_taxonomy_show', {'id': taxonomy.id})}}">{{ taxonomy.name }}</a></li>
+    <li>{{ taxon.name }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('fyb_backend_listing_create', productArchetype), 'fyb.product.create'|trans) }}
+        {{ buttons.create(path('fyb_backend_listing_create', serviceArchetype), 'fyb.service.create'|trans) }}
+        {{ buttons.manage(path('fyb_backend_taxonomy_index'), 'sylius.taxonomy.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-tags"></i> {{ 'sylius.taxon.product_index_header'|trans({'%name%': taxon.name})|raw }}</h1>
+</div>
+
+{{ pagination(products) }}
+{{ list_products(products) }}
+{{ pagination(products) }}
+
+{% endblock %}
