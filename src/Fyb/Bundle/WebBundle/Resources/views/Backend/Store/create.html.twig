@@ -5,14 +5,14 @@
 {% block topbar %}
 <ol class="breadcrumb">
     <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
-    <li><a href="{{ path('fyb_backend_store_index') }}">{{ 'sylius.breadcrumb.channel.index'|trans }}</a></li>
+    <li><a href="{{ path('fyb_backend_store_index') }}">{{ 'fyb.breadcrumb.store.index'|trans }}</a></li>
     <li>{{ 'sylius.breadcrumb.new'|trans }}</li>
 </ol>
 {% endblock %}
 
 {% block content %}
 <div class="page-header">
-    <h1><i class="glyphicon glyphicon-plus-sign"></i> {{ 'sylius.channel.create_header'|trans|raw }}</h1>
+    <h1><i class="glyphicon glyphicon-plus-sign"></i> {{ 'fyb.store.create_header'|trans|raw }}</h1>
 </div>
 
 {{ form_errors(form) }}

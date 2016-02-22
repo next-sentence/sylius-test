@@ -1,0 +1,9 @@
+fyb:
+  form:
+    store:
+      code: Code
+      name: Name
+      address: Address
+      geoloc: Geoloc
+      enabled: Enabled
+

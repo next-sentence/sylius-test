@@ -3,6 +3,7 @@
 <div class="tab-pane active" id="main">
     {{ form_row(form.translations, {'attr': {'class': 'input-lg'}}) }}
     {{ form_row(form.masterVariant.sku) }}
+    {{ form_row(form.type) }}
     <hr />
     <div class="row">
         <div class="col-md-6">
@@ -22,7 +23,7 @@
                 {% if form.masterVariant.pricingCalculator.vars.value == 'volume_based' %}
                     <div>
                         {{ form_label(form.masterVariant.pricingConfiguration) }}
-                        {% include "SyliusWebBundle::Backend/Listing/Form/_volume_based_config.html.twig" %}
+                        {% include "SyliusWebBundle::Backend/Catalog/Listing/Form/_volume_based_config.html.twig" %}
                     </div>
                 {% else %}
                     {{ form_row(form.masterVariant.pricingConfiguration) }}

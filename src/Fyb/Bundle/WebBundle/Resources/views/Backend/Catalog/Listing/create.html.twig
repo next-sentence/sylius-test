@@ -29,7 +29,7 @@
 
 {{ form_errors(form) }}
 
-<form action="{{ path('fyb_backend_listing_create', {'archetype': app.request.get('archetype')}) }}" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
+<form action="{{ path('fyb_backend_listing_create', {'taxonId': app.request.get('taxonId'), 'archetype': app.request.get('archetype')}) }}" method="post" class="form-horizontal" {{ form_enctype(form) }} novalidate>
     {% include 'SyliusWebBundle:Backend/Catalog/Listing:_form.html.twig' %}
     {{ create() }}
 </form>

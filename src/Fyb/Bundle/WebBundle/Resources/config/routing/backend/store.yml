@@ -43,6 +43,3 @@ fyb_backend_store_show:
         _controller: fyb.controller.store:showAction
         _sylius:
             template: SyliusWebBundle:Backend/Store:show.html.twig
-            repository:
-                method: findForDetailsPage
-                arguments: [$id]

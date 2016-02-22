@@ -22,7 +22,7 @@ fyb_backend_taxon_product_index:
     path: /{taxonomyId}/taxons/{id}/listings
     methods: [GET]
     defaults:
-        _controller: sylius.controller.product:indexByTaxonIdAction
+        _controller: sylius.controller.product:indexByTaxonIdAndStoreAction
         _sylius:
             template: SyliusWebBundle:Backend/Catalog:listingIndex.html.twig
             paginate: 30

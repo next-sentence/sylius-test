@@ -1,3 +1,5 @@
+parameters:
+    sylius.controller.backend.dashboard.class: Fyb\Bundle\WebBundle\Controller\Backend\DashboardController
 services:
     fyb_web.menu_builder:
         class: Fyb\Bundle\WebBundle\EventListener\MenuBuilderListener

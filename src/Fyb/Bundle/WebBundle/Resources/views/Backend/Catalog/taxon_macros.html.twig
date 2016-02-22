@@ -49,9 +49,11 @@
         {{ taxon.serviceArchetype ? taxon.serviceArchetype.name }}
     </td>
     <td>
-        <div class="pull-right">
-        {{ buttons.generic(path('fyb_backend_taxon_product_index', {'taxonomyId': taxonomy.id, 'id': taxon.id}), 'sylius.browse_products'|trans) }}
-        </div>
+        {% if taxon.getChildren.isEmpty %}
+            <div class="pull-right">
+            {{ buttons.generic(path('fyb_backend_taxon_product_index', {'taxonomyId': taxonomy.id, 'id': taxon.id}), 'sylius.browse_products'|trans) }}
+            </div>
+        {% endif %}
     </td>
 </tr>
 {% if taxon.children|length > 0 %}

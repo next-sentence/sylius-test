@@ -36,7 +36,7 @@ class MenuBuilderListener
         $child->addChild('category', array(
             'route' => 'fyb_backend_taxonomy_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-stats'),
-        ))->setLabel('Category');
+        ))->setLabel('Catalog');
     }
 
     /**
@@ -68,6 +68,6 @@ class MenuBuilderListener
         $child->addChild('category', array(
             'route' => 'fyb_backend_taxonomy_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-stats'),
-        ))->setLabel('Category');
+        ))->setLabel('Catalog');
     }
 }

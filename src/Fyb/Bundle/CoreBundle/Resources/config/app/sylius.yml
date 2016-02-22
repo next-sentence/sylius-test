@@ -42,6 +42,7 @@ sylius_product:
             classes:
                 controller: Fyb\Bundle\CoreBundle\Controller\ProductController
                 model: Fyb\Component\Core\Model\Product
+                repository: Fyb\Bundle\CoreBundle\Doctrine\ORM\ProductRepository
                 form:
                     default: Fyb\Bundle\CoreBundle\Form\Type\ProductType
 sylius_user:

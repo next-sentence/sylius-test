@@ -4,7 +4,7 @@ fyb_backend_listing_index:
     defaults:
         _controller: sylius.controller.product:indexAction
         _sylius:
-            template: SyliusWebBundle:Backend/Product:index.html.twig
+            template: SyliusWebBundle:Backend/Catalog/Listing:index.html.twig
             sortable: true
             repository:
                 method: createFilterPaginator
@@ -16,7 +16,7 @@ fyb_backend_listing_create:
     defaults:
         _controller: sylius.controller.product:createAction
         _sylius:
-            template: SyliusWebBundle:Backend/Product:create.html.twig
+            template: SyliusWebBundle:Backend/Catalog/Listing:create.html.twig
             redirect: fyb_backend_listing_show
 
 fyb_backend_listing_update:
@@ -25,7 +25,7 @@ fyb_backend_listing_update:
     defaults:
         _controller: sylius.controller.product:updateAction
         _sylius:
-            template: SyliusWebBundle:Backend/Product:update.html.twig
+            template: SyliusWebBundle:Backend/Catalog/Listing:update.html.twig
             redirect: fyb_backend_listing_show
 
 fyb_backend_listing_revert:
@@ -59,7 +59,7 @@ fyb_backend_listing_history:
     defaults:
         _controller: sylius.controller.product:historyAction
         _sylius:
-            template: SyliusWebBundle:Backend/Product:history.html.twig
+            template: SyliusWebBundle:Backend/Catalog/Listing:history.html.twig
             repository:
                 method: findForDetailsPage
                 arguments: [$id]
@@ -70,7 +70,7 @@ fyb_backend_listing_show:
     defaults:
         _controller: sylius.controller.product:showAction
         _sylius:
-            template: SyliusWebBundle:Backend/Product:show.html.twig
+            template: SyliusWebBundle:Backend/Catalog/Listing:show.html.twig
             repository:
                 method: findForDetailsPage
                 arguments: [$id]

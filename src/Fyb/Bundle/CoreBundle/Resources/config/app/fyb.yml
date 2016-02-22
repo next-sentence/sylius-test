@@ -7,3 +7,5 @@ sylius_resource:
         fyb.store:
             classes:
                 model: Fyb\Component\Store\Model\Store
+                form:
+                    default: Fyb\Bundle\StoreBundle\Form\Type\StoreType

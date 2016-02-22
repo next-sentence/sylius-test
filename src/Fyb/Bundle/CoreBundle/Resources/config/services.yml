@@ -2,6 +2,8 @@ parameters:
     sylius.form.type.taxon_selection.class: Fyb\Bundle\CoreBundle\Form\Type\TaxonSelectionType
 
 services:
-#    fyb_core.example:
-#        class: Fyb\Bundle\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    fyb_core.listener.customer_register:
+        class: Fyb\Bundle\CoreBundle\EventListener\CustomerRegisterListener
+        arguments: [@fyb.factory.store]
+        tags:
+            - { name: kernel.event_listener, event: sylius.customer.pre_register, method: preRegister }

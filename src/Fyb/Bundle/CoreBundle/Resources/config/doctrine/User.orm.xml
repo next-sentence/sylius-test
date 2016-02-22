@@ -8,6 +8,9 @@
     <entity name="Fyb\Component\Core\Model\User" table="sylius_user">
 
         <one-to-one field="store" target-entity="Fyb\Component\Store\Model\Store" inversed-by="user">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
             <join-column name="store_id" referenced-column-name="id" on-delete="SET NULL" />
         </one-to-one>
     </entity>

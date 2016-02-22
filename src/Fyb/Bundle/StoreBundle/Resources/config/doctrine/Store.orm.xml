@@ -15,6 +15,13 @@
         <field name="enabled" type="boolean" />
         <field name="geoloc" type="text" nullable="true" />
 
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update"/>
+        </field>
+
         <one-to-one field="user" target-entity="Fyb\Component\Core\Model\User" mapped-by="store">
             <cascade>
                 <cascade-all/>
@@ -26,13 +33,6 @@
                 <cascade-all />
             </cascade>
         </one-to-many>
-
-        <field name="createdAt" column="created_at" type="datetime">
-            <gedmo:timestampable on="create"/>
-        </field>
-        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
-            <gedmo:timestampable on="update"/>
-        </field>
 
     </entity>
 

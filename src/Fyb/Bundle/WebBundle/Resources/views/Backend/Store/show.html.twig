@@ -1,0 +1,63 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('fyb_backend_store_index') }}">{{ 'fyb.breadcrumb.store.index'|trans }}</a></li>
+    <li>{{ store.name }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ 'fyb.store.show_header'|trans|raw }}</h1>
+</div>
+
+<div class="well">
+    {{ buttons.manage(path('fyb_backend_store_index'), 'fyb.store.manage'|trans) }}
+    {{ buttons.edit(path('fyb_backend_store_update', {'id': store.id})) }}
+    {{ buttons.delete(path('fyb_backend_store_delete', {'id': store.id}), null, false, true) }}
+</div>
+
+<table class="table table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>{{ 'fyb.store.name'|trans }}</th>
+            <th>{{ 'fyb.store.code'|trans }}</th>
+            <th>{{ 'fyb.store.enabled'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ store.name }}</td>
+            <td>{{ store.code }}</td>
+            <td>{{ misc.state_label(store.enabled) }}</td>
+        </tr>
+    </tbody>
+</table>
+{% if store.hasProducts %}
+    <table id="products" class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>{{ 'sylius.store.products'|trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in store.products %}
+                <tr id="{{ product.id }}">
+                    <td>{{ product.name }}</td>
+                    <td>
+                        <div class="pull-right">
+                            {{ buttons.delete(path('sylius_backend_product_show', {'id': product.id})) }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock %}
