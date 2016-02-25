@@ -1,0 +1,33 @@
+fyb_backend_taxonomy_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxonomy:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog:index.html.twig
+            sortable: true
+            paginate: 50
+            sorting:
+                name: asc
+
+fyb_backend_taxonomy_show:
+    path: /{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxonomy:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog:show.html.twig
+
+fyb_backend_taxon_product_index:
+    path: /{taxonomyId}/taxons/{id}/listings
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexByTaxonIdAndStoreAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog:listingIndex.html.twig
+            paginate: 30
+
+
+fyb_backend_listing:
+    resource: "@FybWebBundle/Resources/config/routing/backend/listing.yml"
+    prefix: /listings

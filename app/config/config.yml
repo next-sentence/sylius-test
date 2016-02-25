@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @SyliusCoreBundle/Resources/config/app/main.yml }
-    - { resource: @AppBundle/Resources/config/app.yml }
+    - { resource: @FybCoreBundle/Resources/config/app/main.yml }
 
 framework:
     translator:      { fallback: %sylius.locale% }
@@ -54,6 +54,18 @@ doctrine:
             default:
                 auto_mapping: true
                 mappings:
+                    FybAttributeBundle:
+                        type: xml
+                        dir: Resources/config/doctrine
+                        prefix: Fyb\Component\Attribute\Model
+                    FybStoreBundle:
+                        type: xml
+                        dir: Resources/config/doctrine
+                        prefix: Fyb\Component\Store\Model
+                    FybCoreBundle:
+                        type: xml
+                        dir: Resources/config/doctrine
+                        prefix: Fyb\Component\Core\Model
                     gedmo_loggable:
                         type: annotation
                         prefix: Gedmo\Loggable\Entity
@@ -87,6 +99,6 @@ swiftmailer:
 
 doctrine_migrations:
     dir_name:   %kernel.root_dir%/migrations
-    namespace:  App\Migrations
-    table_name: app_migrations
-    name:       App Migrations
+    namespace:  Fyb\Migrations
+    table_name: fyb_migrations
+    name:       Fyb Migrations

@@ -1,0 +1,24 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Catalog:taxon_macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'fyb.breadcrumb.catalog'|trans }}</li>
+    <li><a href="{{ path('fyb_backend_taxonomy_index') }}">{{ 'sylius.breadcrumb.taxonomy.index'|trans }}</a></li>
+    <li>{{ taxonomy.name }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('fyb_backend_taxonomy_index'), 'sylius.taxonomy.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-tags"></i> {{ 'sylius.taxonomy.show_header'|trans({'%name%': taxonomy.name})|raw }}</h1>
+</div>
+
+{{ list(taxonomy, taxonomy.taxons) }}
+
+{% endblock %}

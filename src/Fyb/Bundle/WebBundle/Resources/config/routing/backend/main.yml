@@ -1,0 +1,10 @@
+_parent:
+    resource: "@SyliusWebBundle/Resources/config/routing/backend/main.yml"
+
+fyb_backend_store:
+    resource: "@FybWebBundle/Resources/config/routing/backend/store.yml"
+    prefix: /stores
+
+fyb_backend_catalog:
+    resource: "@FybWebBundle/Resources/config/routing/backend/catalog.yml"
+    prefix: /catalog

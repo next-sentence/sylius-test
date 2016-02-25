@@ -1,0 +1,8 @@
+parameters:
+    sylius.controller.backend.dashboard.class: Fyb\Bundle\WebBundle\Controller\Backend\DashboardController
+services:
+    fyb_web.menu_builder:
+        class: Fyb\Bundle\WebBundle\EventListener\MenuBuilderListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu_builder.backend.main, method: addBackendMenuItemsMain }
+            - { name: kernel.event_listener, event: sylius.menu_builder.backend.sidebar, method: addBackendMenuItemsSidebar }

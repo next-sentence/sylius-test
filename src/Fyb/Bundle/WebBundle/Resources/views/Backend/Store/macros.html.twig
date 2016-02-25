@@ -1,0 +1,41 @@
+{% macro list(stores) %}
+    {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+    {% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+    {% import 'SyliusWebBundle:Backend/Macros:misc.html.twig' as misc %}
+
+    {% if stores|length > 0 %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{{ sylius_resource_sort('code', 'fyb.store.code'|trans) }}</th>
+                <th>{{ sylius_resource_sort('name', 'fyb.store.name'|trans) }}</th>
+                <th>{{ sylius_resource_sort('address', 'fyb.store.address'|trans) }}</th>
+                <th>{{ sylius_resource_sort('geoloc', 'fyb.store.geoloc'|trans) }}</th>
+                <th>{{ sylius_resource_sort('enabled', 'fyb.store.enabled'|trans) }}</th>
+                <th>{{ sylius_resource_sort('updatedAt', 'fyb.store.updated_at'|trans) }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for store in stores %}
+                <tr id="{{ store.id }}">
+                    <td>{{ store.code }}</td>
+                    <td>{{ store.name }}</td>
+                    <td>{{ store.address }}</td>
+                    <td>{{ store.geoloc }}</td>
+                    <td>{{ misc.state_label(store.enabled) }}</td>
+                    <td>{{ store.updatedAt|date }}</td>
+                    <td>
+                        <div class="pull-right">
+                            {{ buttons.edit(path('fyb_backend_store_update', {'id': store.id})) }}
+                            {{ buttons.delete(path('fyb_backend_store_delete', {'id': store.id})) }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {{ alerts.info('fyb.store.no_results'|trans) }}
+    {% endif %}
+{% endmacro %}

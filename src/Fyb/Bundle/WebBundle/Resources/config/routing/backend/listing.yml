@@ -1,0 +1,92 @@
+fyb_backend_listing_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog/Listing:index.html.twig
+            sortable: true
+            repository:
+                method: createFilterPaginator
+                arguments: [$criteria, $sorting, $deleted]
+
+fyb_backend_listing_create:
+    path: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog/Listing:create.html.twig
+            redirect: fyb_backend_listing_show
+
+fyb_backend_listing_update:
+    path: /{id}/edit
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: sylius.controller.product:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog/Listing:update.html.twig
+            redirect: fyb_backend_listing_show
+
+fyb_backend_listing_revert:
+    path: /{id}/revert/{version}
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.product:revertAction
+        _sylius:
+            redirect: fyb_backend_listing_show
+
+fyb_backend_listing_delete:
+    path: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.product:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: fyb_backend_listing_index
+
+fyb_backend_listing_delete_restore:
+    path: /{id}/restore
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.product:restoreAction
+        _sylius:
+            redirect: fyb_backend_listing_show
+
+fyb_backend_listing_history:
+    path: /{id}/history
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:historyAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog/Listing:history.html.twig
+            repository:
+                method: findForDetailsPage
+                arguments: [$id]
+
+fyb_backend_listing_show:
+    path: /{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Catalog/Listing:show.html.twig
+            repository:
+                method: findForDetailsPage
+                arguments: [$id]
+
+fyb_backend_listing_enable:
+    path: /{id}/enable
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.product:enableAction
+        _sylius:
+            redirect: fyb_backend_listing_index
+
+fyb_backend_listing_disable:
+    path: /{id}/disable
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.product:disableAction
+        _sylius:
+            redirect: fyb_backend_listing_index

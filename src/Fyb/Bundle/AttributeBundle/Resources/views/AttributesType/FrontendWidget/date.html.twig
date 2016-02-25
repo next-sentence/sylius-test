@@ -1,0 +1,12 @@
+<td>
+  {% if attributeWidget is constant('Fyb\\Component\\Attribute\\AttributeType\\DateAttributeType::TEXT') %}
+      {{ attributeValue|date('Y/m/d') }}
+  {% else %}
+      <div id="date_datepicker"></div>
+      <script>
+          window.onload = function() {
+              $("#date_datepicker").datepicker("setDate", "{{ attributeValue|date('m/d/Y') }}");
+          }
+      </script>
+  {% endif %}
+</td>

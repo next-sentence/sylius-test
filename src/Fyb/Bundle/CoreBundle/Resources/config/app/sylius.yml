@@ -1,0 +1,93 @@
+sylius_attribute:
+    resources:
+        product:
+            attribute:
+                classes:
+                    controller: Fyb\Bundle\AttributeBundle\Controller\AttributeController
+                    model: Fyb\Component\Attribute\Model\Attribute
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\AttributeType
+            attribute_value:
+                classes:
+                    model: Fyb\Component\Attribute\Model\AttributeValue
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\AttributeValueType
+sylius_archetype:
+    resources:
+        product:
+            archetype:
+                classes:
+                    model: Fyb\Component\Attribute\Model\Archetype
+                    form:
+                        default: Fyb\Bundle\AttributeBundle\Form\Type\ArchetypeType
+            subject: Fyb\Component\Core\Model\Product
+            attribute: Fyb\Component\Attribute\Model\Attribute
+            option: Sylius\Component\Product\Model\Option
+
+sylius_taxonomy:
+    resources:
+        taxonomy:
+            classes:
+                controller: Fyb\Bundle\CoreBundle\Controller\TaxonomyController
+        taxon:
+            classes:
+                model: Fyb\Component\Core\Model\Taxon
+                repository: Fyb\Bundle\CoreBundle\Doctrine\ORM\TaxonRepository
+                form:
+                    default: Fyb\Bundle\CoreBundle\Form\Type\TaxonType
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                controller: Fyb\Bundle\CoreBundle\Controller\ProductController
+                model: Fyb\Component\Core\Model\Product
+                repository: Fyb\Bundle\CoreBundle\Doctrine\ORM\ProductRepository
+                form:
+                    default: Fyb\Bundle\CoreBundle\Form\Type\ProductType
+sylius_user:
+    resources:
+        user:
+            classes:
+                model: Fyb\Component\Core\Model\User
+        customer:
+            classes:
+                controller: Fyb\Bundle\CoreBundle\Controller\CustomerController
+
+sylius_rbac:
+    permissions:
+        fyb.manage.store: Manage stores
+        fyb.store.show: Show store
+        fyb.store.index: List stores
+        fyb.store.create: Create store
+        fyb.store.update: Edit store
+        fyb.store.delete: Delete store
+        fyb.store: Manage stores
+
+        fyb.manage.listing: Manage listings
+        fyb.listing.show: Show listing
+        fyb.listing.index: List listings
+        fyb.listing.create: Create listing
+        fyb.listing.update: Edit listing
+        fyb.listing.delete: Delete listing
+        fyb.listing: Manage listings
+        fyb.catalog.index: List catalog
+        fyb.catalog.show: Show catalog
+    permissions_hierarchy:
+        fyb.manage.store: [fyb.store.show, fyb.store.index, fyb.store.create, fyb.store.update, fyb.store.delete]
+        fyb.store: [fyb.manage.store]
+        fyb.manage.listing: [fyb.listing.show, fyb.listing.index, fyb.listing.create, fyb.listing.update, fyb.listing.delete]
+        fyb.listing: [fyb.manage.listing, fyb.catalog.index, fyb.catalog.show]
+    roles:
+        store_manager:
+            name: Store Manager
+            description: Users responsible for store management
+            permissions: [fyb.store]
+            security_roles: [ROLE_ADMINISTRATION_ACCESS]
+        listing_manager:
+            name: Listing Manager
+            description: Users responsible for Listing management
+            permissions: [fyb.listing]
+            security_roles: [ROLE_ADMINISTRATION_ACCESS]
+    roles_hierarchy:
+        administrator: [store_manager, listing_manager]

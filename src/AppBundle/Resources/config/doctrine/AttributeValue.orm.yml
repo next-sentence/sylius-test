@@ -1,7 +1,0 @@
-AppBundle\Entity\AttributeValue:
-    type: entity
-    table: sylius_product_attribute_value
-    fields:
-        array:
-            type: array
-            nullable: true

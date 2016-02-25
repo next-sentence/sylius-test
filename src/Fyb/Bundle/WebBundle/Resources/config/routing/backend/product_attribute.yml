@@ -1,0 +1,8 @@
+_parent:
+    resource: "@SyliusWebBundle/Resources/config/routing/backend/product_attribute.yml"
+
+sylius_backend_render_attribute_widget_forms:
+    path: /attribute-widget-forms
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_attribute:renderAttributeWidgetFormsAction

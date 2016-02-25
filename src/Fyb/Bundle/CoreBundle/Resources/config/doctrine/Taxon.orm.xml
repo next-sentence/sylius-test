@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Fyb\Component\Core\Model\Taxon" table="sylius_taxon">
+
+        <one-to-one field="productArchetype" target-entity="Fyb\Component\Attribute\Model\Archetype">
+            <join-column name="product_archetype_id" referenced-column-name="id"/>
+        </one-to-one>
+        <one-to-one field="serviceArchetype" target-entity="Fyb\Component\Attribute\Model\Archetype">
+            <join-column name="service_archetype_id" referenced-column-name="id"/>
+        </one-to-one>
+   </entity>
+
+</doctrine-mapping>
